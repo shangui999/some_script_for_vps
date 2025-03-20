@@ -6,7 +6,7 @@ TARGET_HOME=$(eval echo ~$TARGET_USER)
 setup_ssh_key() {
     local ssh_dir="$TARGET_HOME/.ssh"
     local auth_keys="$ssh_dir/authorized_keys"
-    local pub_key='ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCo94gzCc99cERjtsA3+DD2BlnuPgaUmItkhhTQqDxJCn/Vx4UQaFRWvulal5Z97dJzzFCds2wx/wP6vtmf6mtVFODDpvhW8Iz3qEg8230Q+BwyhUOSQmYcFQfqdG4IIb0cznJJO/g5ISKZ9HgK/novon6Tax0nusSp0BxLOLFbf/Kv1ctksKU8BUuDxNSqlIBKgrn58H2efUdLy4WM29gaxF/Kr5ALlQSF4am/CLOyVJhADtucBmYZLzz8rMF9i3gbgpbqz8YcNFS2svb2MKpMuolGxPoQPzg1TwxTzQrbgLcIK4GY773Leoe3ZHq1keV74zwM+Sq70iPg5S74sh27'
+    local pub_key='ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILyJ+TshVr8eOxRmf1PuuG01Lrkiz48jnxfHj2Uktklv'
 
     echo  "\n配置 $TARGET_USER 的SSH密钥..."
     mkdir -p "$ssh_dir"
