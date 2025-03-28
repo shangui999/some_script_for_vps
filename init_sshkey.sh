@@ -8,13 +8,13 @@ setup_ssh_key() {
     local auth_keys="$ssh_dir/authorized_keys"
     local pub_key='ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILyJ+TshVr8eOxRmf1PuuG01Lrkiz48jnxfHj2Uktklv'
 
-    echo  "\n配置 $TARGET_USER 的SSH密钥..."
+    echo  "配置 $TARGET_USER 的SSH密钥..."
     mkdir -p "$ssh_dir"
     chmod 700 "$ssh_dir"
     
     if ! grep -qF "$pub_key" "$auth_keys" 2>/dev/null; then
         echo "$pub_key" >> "$auth_keys"
-        color_echo green "✅ 公钥已添加到授权文件"
+        echo "✅ 公钥已添加到授权文件"
     else
         echo "⚠️  公钥已存在，跳过添加"
     fi
