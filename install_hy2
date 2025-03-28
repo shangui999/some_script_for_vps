@@ -1,0 +1,35 @@
+listen: :9443 #监听端口
+
+#使用CA证书
+#acme:
+#  domains:
+#    - a.com #你的域名，需要先解析到服务器ip
+#  email: test@sharklasers.com
+
+#使用自签证书
+tls:
+  cert: /etc/hysteria/server.crt
+  key: /etc/hysteria/server.key
+
+auth:
+  type: password
+  password: xxxxxxxxxx
+
+bandwidth:
+  up: 110 mbps
+  down: 50 mbps
+
+masquerade:
+  type: proxy
+  proxy:
+    url: https://bing.com #伪装网址
+    rewriteHost: true
+
+
+bash <(curl -fsSL https://get.hy2.sh/)
+
+openssl req -x509 -nodes -newkey ec:<(openssl ecparam -name prime256v1) -keyout /etc/hysteria/server.key -out /etc/hysteria/server.crt -subj "/CN=bing.com" -days 36500 && sudo chown hysteria /etc/hysteria/server.key && sudo chown hysteria /etc/hysteria/server.crt
+
+iptables -t nat -A PREROUTING -i xxxxxxxxx -p udp --dport 50000:60000 -j REDIRECT --to-ports 9443
+
+
