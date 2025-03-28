@@ -88,6 +88,9 @@ fi
 
 # 重启服务
 systemctl restart sshd
+
+apt install fail2ban -y 
+
 systemctl restart fail2ban
 
 # 显示完成信息

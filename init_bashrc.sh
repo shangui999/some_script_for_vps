@@ -15,7 +15,7 @@ setup_aliases() {
         "alias fgrep='fgrep --color=auto'"
     )
 
-    echo "\n[1/4] 配置用户 $TARGET_USER 的别名..."
+    echo "配置用户 $TARGET_USER 的别名..."
     for alias_line in "${aliases[@]}"; do
         if ! grep -qF "$alias_line" "$bashrc"; then
             echo "$alias_line" >> "$bashrc"
